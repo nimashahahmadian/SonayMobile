@@ -72,7 +72,6 @@ class _MyWidgetState extends State<MyWidget> {
       );
     }
 
-    ;
     return Scaffold(
       key: state,
       endDrawer: SafeArea(
@@ -96,6 +95,10 @@ class _MyWidgetState extends State<MyWidget> {
         height: he,
         width: wi,
         child: ListView(children: <Widget>[
+          Container(
+            color: Colors.red,
+            height: he * .1,
+          ),
           Container(
             constraints: BoxConstraints(minHeight: he * .15),
             margin:
