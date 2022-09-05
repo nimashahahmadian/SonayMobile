@@ -96,10 +96,6 @@ class _MyWidgetState extends State<MyWidget> {
         width: wi,
         child: ListView(children: <Widget>[
           Container(
-            color: Colors.red,
-            height: he * .1,
-          ),
-          Container(
             constraints: BoxConstraints(minHeight: he * .15),
             margin:
                 EdgeInsets.only(top: he * .03, left: wi * .06, right: wi * .06),
