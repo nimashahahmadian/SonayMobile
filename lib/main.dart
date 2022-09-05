@@ -103,7 +103,6 @@ class _MyWidgetState extends State<MyWidget> {
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Container(),
                   Container(
                     child: Text(
                       'Esteglal',
