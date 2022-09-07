@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/modules/itemdetail.dart';
+import 'package:flutter_application_1/pages/books/books.dart';
 
 void main() => runApp(MainScreen());
 
@@ -42,33 +43,42 @@ class _MyWidgetState extends State<MyWidget> {
     var wi = MediaQuery.of(context).size.width;
     var he = MediaQuery.of(context).size.height;
     Widget draweritem({required String label, IconData? icon}) {
-      return Container(
-        // padding: EdgeInsets.all(wi * .03),
-        padding: EdgeInsets.symmetric(horizontal: wi * .02),
-        margin: EdgeInsets.only(left: wi * .08, right: wi * .08, top: he * .05),
-        height: he * .08,
-        width: wi * .4,
-        decoration: BoxDecoration(
-          color: Colors.white24,
-          borderRadius: BorderRadius.circular(15),
+      return InkWell(
+        onTap: () {
+          label == 'Books'
+              ? Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (c) => books()))
+              : MainScreen();
+        },
+        child: Container(
+          // padding: EdgeInsets.all(wi * .03),
+          padding: EdgeInsets.symmetric(horizontal: wi * .02),
+          margin:
+              EdgeInsets.only(left: wi * .08, right: wi * .08, top: he * .05),
+          height: he * .08,
+          width: wi * .4,
+          decoration: BoxDecoration(
+            color: Colors.white24,
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: Center(
+              child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              icon != null
+                  ? Container(
+                      child: Icon(icon),
+                    )
+                  : Container(color: Colors.black),
+              Container(
+                child: Text(label),
+                margin: icon == null
+                    ? EdgeInsets.only(right: wi * .02)
+                    : EdgeInsets.only(left: wi * .01),
+              ),
+            ],
+          )),
         ),
-        child: Center(
-            child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            icon != null
-                ? Container(
-                    child: Icon(icon),
-                  )
-                : Container(color: Colors.black),
-            Container(
-              child: Text(label),
-              margin: icon == null
-                  ? EdgeInsets.only(right: wi * .02)
-                  : EdgeInsets.only(left: wi * .01),
-            ),
-          ],
-        )),
       );
     }
 
@@ -98,7 +108,7 @@ class _MyWidgetState extends State<MyWidget> {
           Container(
             constraints: BoxConstraints(minHeight: he * .15),
             margin:
-                EdgeInsets.only(top: he * .03, left: wi * .06, right: wi * .06),
+                EdgeInsets.only(top: he * .01, left: wi * .06, right: wi * .06),
             padding: EdgeInsets.all(wi * .06),
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -169,7 +179,7 @@ class _MyWidgetState extends State<MyWidget> {
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20),
                     topRight: Radius.circular(20))),
-            height: he * .62,
+            height: he * .64,
             margin: EdgeInsets.only(top: he * .05),
             child: ListView.builder(
               itemBuilder: (c, i) {
