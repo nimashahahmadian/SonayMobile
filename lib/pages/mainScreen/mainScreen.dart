@@ -220,7 +220,7 @@ class _mainScreenState extends State<mainScreen> {
         label == 'Books'
             ? Navigator.of(context)
                 .push(MaterialPageRoute(builder: (c) => books()))
-            : mainScreen();
+            : Navigator.of(context).pop();
       },
       child: Container(
         // padding: EdgeInsets.all(wi * .03),

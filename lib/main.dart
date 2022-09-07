@@ -35,7 +35,7 @@ class _MyWidgetState extends State<MyWidget> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Future.delayed(Duration(seconds: 3)).then((c) => Navigator.of(context)
+    Future.delayed(Duration(seconds: 5)).then((c) => Navigator.of(context)
         .pushReplacement(MaterialPageRoute(builder: (c) => mainScreen())));
   }
 
