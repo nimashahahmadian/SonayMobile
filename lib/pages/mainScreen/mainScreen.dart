@@ -58,7 +58,11 @@ class _mainScreenState extends State<mainScreen> {
                   Container(
                     child: Text(
                       'Esteglal',
-                      style: TextStyle(fontSize: 24, color: Colors.white),
+                      style: TextStyle(
+                        fontSize: 24,
+                        color: Colors.white,
+                        fontFamily: 'sans',
+                      ),
                     ),
                   ),
                   InkWell(
@@ -93,9 +97,11 @@ class _mainScreenState extends State<mainScreen> {
                     },
                     child: Container(
                       margin: EdgeInsets.all(he * .01),
-                      padding: EdgeInsets.all(he * .02),
+                      padding: EdgeInsets.all(he * .01),
+                      height: he * .02,
+                      width: wi * .32,
                       constraints: BoxConstraints(
-                          minWidth: wi * .1, minHeight: he * .01),
+                          minWidth: wi * .15, minHeight: he * .03),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           color: active == i
@@ -105,6 +111,7 @@ class _mainScreenState extends State<mainScreen> {
                           child: Text(
                         'class$i',
                         style: TextStyle(
+                            fontFamily: 'sans',
                             color: active == i
                                 ? Colors.white
                                 : Colors.blueGrey[900]),
@@ -172,16 +179,29 @@ class _mainScreenState extends State<mainScreen> {
                                     child: Text(
                                       'title$i',
                                       style: TextStyle(
-                                          fontWeight: FontWeight.bold),
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: 'sans',
+                                          color:
+                                              Color.fromARGB(80, 10, 109, 106)),
                                     ),
                                   ),
                                   Align(
                                     alignment: Alignment.centerLeft,
-                                    child: Text('hellow this mightt be some'),
+                                    child: Text(
+                                      'hellow this mightt be some',
+                                      style: TextStyle(
+                                          color: Colors.blueGrey[800],
+                                          fontFamily: 'sans '),
+                                    ),
                                   ),
                                   Align(
                                     alignment: Alignment.bottomRight,
-                                    child: Text('price\$'),
+                                    child: Text(
+                                      'price\$',
+                                      style: TextStyle(
+                                          color: Colors.brown[300],
+                                          fontFamily: 'sans'),
+                                    ),
                                   )
                                 ],
                               ),
@@ -242,7 +262,10 @@ class _mainScreenState extends State<mainScreen> {
                   )
                 : Container(color: Colors.black),
             Container(
-              child: Text(label),
+              child: Text(
+                label,
+                style: TextStyle(fontFamily: 'sans'),
+              ),
               margin: icon == null
                   ? EdgeInsets.only(right: wi * .02)
                   : EdgeInsets.only(left: wi * .01),

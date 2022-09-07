@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/modules/itemdetail.dart';
+import 'package:flutter_application_1/modules/signupin.dart';
 import 'package:flutter_application_1/pages/books/books.dart';
 import 'package:flutter_application_1/pages/mainScreen/mainScreen.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
@@ -36,7 +37,7 @@ class _MyWidgetState extends State<MyWidget> {
     // TODO: implement initState
     super.initState();
     Future.delayed(Duration(seconds: 5)).then((c) => Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (c) => mainScreen())));
+        .pushReplacement(MaterialPageRoute(builder: (c) => signupin())));
   }
 
   @override
@@ -51,13 +52,13 @@ class _MyWidgetState extends State<MyWidget> {
             isRepeatingAnimation: false,
             animatedTexts: [
               TyperAnimatedText('Esteglal Ins.',
-                  textStyle: TextStyle(fontSize: wi * .08))
+                  textStyle: TextStyle(fontSize: wi * .08, fontFamily: 'sans'))
             ],
           ),
         ),
         decoration: BoxDecoration(
             gradient: LinearGradient(
-                colors: [Color(0xffff8a8f), Color(0xffcff3ff)],
+                colors: [Color(0xff80ff72), Color(0xff7ee8fa)],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight)),
       ),
