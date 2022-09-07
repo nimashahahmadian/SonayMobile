@@ -48,9 +48,9 @@ class _MyWidgetState extends State<MyWidget> {
         child: Align(
           alignment: Alignment.center,
           child: AnimatedTextKit(
+            isRepeatingAnimation: false,
             animatedTexts: [
               TyperAnimatedText('Esteglal Ins.',
-                  speed: Duration(milliseconds: 800),
                   textStyle: TextStyle(fontSize: wi * .08))
             ],
           ),
