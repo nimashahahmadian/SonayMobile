@@ -50,6 +50,7 @@ class _MyWidgetState extends State<MyWidget> {
           child: AnimatedTextKit(
             animatedTexts: [
               TyperAnimatedText('Esteglal Ins.',
+                  speed: Duration(milliseconds: 800),
                   textStyle: TextStyle(fontSize: wi * .08))
             ],
           ),
