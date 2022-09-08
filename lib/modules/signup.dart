@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/mainScreen/mainScreen.dart';
 
 class signup extends StatefulWidget {
   const signup({Key? key}) : super(key: key);
@@ -59,7 +60,10 @@ class _signupState extends State<signup> {
                 ]),
             child: Center(
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (c) => mainScreen()));
+                },
                 child: Text('Register'),
               ),
             ),

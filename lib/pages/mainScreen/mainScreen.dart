@@ -46,7 +46,8 @@ class _mainScreenState extends State<mainScreen> {
           child: Container(
         height: he,
         width: wi,
-        child: ListView(children: <Widget>[
+        child: ListView(physics: NeverScrollableScrollPhysics(), children: <
+            Widget>[
           Container(
             constraints: BoxConstraints(minHeight: he * .15),
             margin:
@@ -128,7 +129,7 @@ class _mainScreenState extends State<mainScreen> {
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20),
                     topRight: Radius.circular(20))),
-            height: he * .64,
+            height: he * .7,
             margin: EdgeInsets.only(top: he * .05),
             child: ListView.builder(
               itemBuilder: (c, i) {
