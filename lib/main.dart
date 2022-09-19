@@ -1,9 +1,13 @@
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/modules/itemdetail.dart';
 import 'package:flutter_application_1/modules/signupin.dart';
 import 'package:flutter_application_1/pages/books/books.dart';
 import 'package:flutter_application_1/pages/mainScreen/mainScreen.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:http/http.dart' as http;
 
 void main() => runApp(MainScreen());
 
@@ -42,6 +46,7 @@ class _MyWidgetState extends State<MyWidget> {
 
   @override
   Widget build(BuildContext context) {
+    ;
     var he = MediaQuery.of(context).size.height;
     var wi = MediaQuery.of(context).size.width;
     return Scaffold(

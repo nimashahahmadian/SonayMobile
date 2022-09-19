@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/mainScreen/mainScreen.dart';
 
 class signin extends StatefulWidget {
   const signin({Key? key}) : super(key: key);
@@ -56,7 +57,10 @@ class _signinState extends State<signin> {
                       ]),
                   child: Center(
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(builder: (c) => mainScreen()));
+                      },
                       child: Text('Enter'),
                     ),
                   ),

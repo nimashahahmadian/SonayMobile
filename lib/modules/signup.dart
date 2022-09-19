@@ -1,5 +1,9 @@
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/mainScreen/mainScreen.dart';
+import 'package:http/http.dart' as http;
 
 class signup extends StatefulWidget {
   const signup({Key? key}) : super(key: key);
@@ -9,12 +13,14 @@ class signup extends StatefulWidget {
 }
 
 class _signupState extends State<signup> {
+  TextEditingController namecont = TextEditingController();
+  TextEditingController passcont = TextEditingController();
+  TextEditingController emailcont = TextEditingController();
+  TextEditingController phonecont = TextEditingController();
+  TextEditingController usernamecont = TextEditingController();
+  GlobalKey<ScaffoldState> scaff = GlobalKey();
   @override
   Widget build(BuildContext context) {
-    TextEditingController namecont = TextEditingController();
-    TextEditingController passcont = TextEditingController();
-    TextEditingController mailcont = TextEditingController();
-    TextEditingController phonecont = TextEditingController();
     var wi = MediaQuery.of(context).size.width;
     var he = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -24,12 +30,17 @@ class _signupState extends State<signup> {
           SizedBox(
             height: he * .08,
           ),
-          fieldbuilder(wi, he, 'UserName', namecont, 20,
+          fieldbuilder(wi, he, 'Name', namecont, 20,
               icon: Icons.person, inputtype: TextInputType.name),
           SizedBox(
             height: he * .05,
           ),
-          fieldbuilder(wi, he, 'Email', mailcont, 60,
+          fieldbuilder(wi, he, 'UserName', usernamecont, 20,
+              icon: Icons.person_outline, inputtype: TextInputType.text),
+          SizedBox(
+            height: he * .05,
+          ),
+          fieldbuilder(wi, he, 'Email', emailcont, 60,
               icon: Icons.email_outlined,
               inputtype: TextInputType.emailAddress),
           SizedBox(
@@ -43,7 +54,7 @@ class _signupState extends State<signup> {
           ),
           fieldbuilder(wi, he, 'Password', passcont, 50,
               icon: Icons.lock_open_outlined,
-              inputtype: TextInputType.name,
+              inputtype: TextInputType.text,
               obscured: true),
           SizedBox(
             height: he * .05,
@@ -60,9 +71,10 @@ class _signupState extends State<signup> {
                 ]),
             child: Center(
               child: InkWell(
-                onTap: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (c) => mainScreen()));
+                onTap: () async {
+                  print('tapped');
+
+                  checker(context);
                 },
                 child: Text('Register'),
               ),
@@ -73,6 +85,76 @@ class _signupState extends State<signup> {
           ),
         ]),
       )),
+    );
+  }
+
+  checker(BuildContext context) async {
+    emailcont.text.trim().isEmpty ||
+            namecont.text.trim().isEmpty ||
+            phonecont.text.trim().isEmpty ||
+            usernamecont.text.trim().isEmpty ||
+            passcont.text.trim().isEmpty
+        ? showalertdialog(context, 'Error', 'fill in the fields')
+        : SaveData();
+  }
+
+  SaveData() async {
+    print('in save data');
+    var url = Uri.https('google.com', '/');
+    await http.post(url, headers: {
+      "Access-Control-Allow-Origin": "*",
+      'Accept': '*/*'
+    }, body: {
+      'username': usernamecont.text.trim(),
+      'name': namecont.text.trim(),
+      'phone': phonecont.text.trim(),
+      'email': emailcont.text.trim(),
+      'pass': passcont.text,
+    }).then((res) async {
+      var body = await jsonDecode(res.body);
+      // ignore: avoid_print
+      print(body);
+      return body['success']
+          ? showalertdialog(context, "Registered", "Regestration complete",
+              tap: await Navigator.of(context).push(
+                  MaterialPageRoute(builder: ((context) => mainScreen()))))
+          : showalertdialog(context, "User Already exist", "Try signing in");
+    });
+  }
+
+  showalertdialog(BuildContext context, String Title, String message,
+      {Function? tap}) {
+    Widget Okbutton = Container(
+      child: InkWell(
+        child: Center(
+          child: Text('OK'),
+        ),
+        onTap: () {
+          if (tap == null) {
+            Navigator.of(context).pop();
+          } else {
+            tap;
+          }
+          ;
+        },
+      ),
+    );
+
+    AlertDialog alert = AlertDialog(
+      buttonPadding: EdgeInsets.all(20),
+      contentPadding: EdgeInsets.all(20),
+      actionsAlignment: MainAxisAlignment.center,
+      elevation: 10,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+      actions: [Okbutton],
+      title: Text(Title),
+      content: Text(message),
+    );
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
     );
   }
 
