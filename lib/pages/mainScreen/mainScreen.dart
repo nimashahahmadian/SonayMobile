@@ -46,189 +46,187 @@ class _mainScreenState extends State<mainScreen> {
           child: Container(
         height: he,
         width: wi,
-        child: ListView(physics: NeverScrollableScrollPhysics(), children: <
-            Widget>[
-          Container(
-            constraints: BoxConstraints(minHeight: he * .15),
-            margin:
-                EdgeInsets.only(top: he * .01, left: wi * .06, right: wi * .06),
-            padding: EdgeInsets.all(wi * .06),
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Container(
-                    child: Text(
-                      'Esteglal',
-                      style: TextStyle(
-                        fontSize: 24,
-                        color: Colors.white,
-                        fontFamily: 'sans',
-                      ),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      if (!state.currentState!.isEndDrawerOpen) {
-                        state.currentState!.openEndDrawer();
-                      }
-                      ;
-                    },
-                    child: Container(
-                      child: Icon(
-                        Icons.reorder,
-                        color: Colors.white,
-                      ),
-                    ),
-                  )
-                ]),
-          ),
-          Container(
-            margin:
-                EdgeInsets.only(top: he * .01, left: wi * .06, right: wi * .06),
-            height: he * .1,
-            child: ListView.builder(
-              itemBuilder: (c, i) {
-                return InkWell(
-                    splashColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () {
-                      setState(() {
-                        active = i;
-                      });
-                    },
-                    child: Container(
-                      margin: EdgeInsets.all(he * .01),
-                      padding: EdgeInsets.all(he * .01),
-                      height: he * .02,
-                      width: wi * .32,
-                      constraints: BoxConstraints(
-                          minWidth: wi * .15, minHeight: he * .03),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: active == i
-                              ? Colors.white24
-                              : Colors.transparent),
-                      child: Center(
-                          child: Text(
-                        'class$i',
-                        style: TextStyle(
+        child: ListView(
+            physics: NeverScrollableScrollPhysics(),
+            children: <Widget>[
+              Container(
+                constraints: BoxConstraints(minHeight: he * .15),
+                margin: EdgeInsets.only(left: wi * .06, right: wi * .06),
+                padding: EdgeInsets.all(wi * .06),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Container(
+                        child: Text(
+                          'Esteglal',
+                          style: TextStyle(
+                            fontSize: 24,
+                            color: Colors.white,
                             fontFamily: 'sans',
-                            color: active == i
-                                ? Colors.white
-                                : Colors.blueGrey[900]),
-                      )),
-                    ));
-              },
-              itemCount: 10,
-              scrollDirection: Axis.horizontal,
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20))),
-            height: he * .7,
-            margin: EdgeInsets.only(top: he * .05),
-            child: ListView.builder(
-              itemBuilder: (c, i) {
-                return Container(
-                  margin: EdgeInsets.all(wi * .05),
-                  width: wi * .1,
-                  height: he * .3,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: [
-                      BoxShadow(
-                          blurRadius: he * .02,
-                          color: Colors.grey,
-                          spreadRadius: 0.6)
-                    ],
-                    color: i.isEven
-                        ? Colors.brown[200]?.withOpacity(0.5)
-                        : Color.fromARGB(80, 10, 109, 106),
-                  ),
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (c) => itemdtail()));
-                    },
-                    child: Container(
-                      margin: EdgeInsets.only(right: wi * .01),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(20),
-                            topLeft: Radius.circular(20),
-                            bottomRight: Radius.circular(20),
-                            topRight: Radius.circular(20)),
+                          ),
+                        ),
                       ),
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: <Widget>[
-                            Container(
-                              width: wi * .4,
-                              margin: EdgeInsets.only(
-                                  left: wi * .03,
-                                  top: he * .02,
-                                  bottom: he * .02),
-                              child: Stack(
-                                children: <Widget>[
-                                  Align(
-                                    alignment: Alignment.topCenter,
-                                    child: Text(
-                                      'title$i',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: 'sans',
-                                          color:
-                                              Color.fromARGB(80, 10, 109, 106)),
-                                    ),
+                      InkWell(
+                        onTap: () {
+                          if (!state.currentState!.isEndDrawerOpen) {
+                            state.currentState!.openEndDrawer();
+                          }
+                          ;
+                        },
+                        child: Container(
+                          child: Icon(
+                            Icons.reorder,
+                            color: Colors.white,
+                          ),
+                        ),
+                      )
+                    ]),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: wi * .06, right: wi * .06),
+                height: he * .08,
+                child: ListView.builder(
+                  itemBuilder: (c, i) {
+                    return InkWell(
+                        splashColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () {
+                          setState(() {
+                            active = i;
+                          });
+                        },
+                        child: Container(
+                          margin: EdgeInsets.all(he * .01),
+                          padding: EdgeInsets.all(he * .01),
+                          height: he * .02,
+                          width: wi * .23,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: active == i
+                                  ? Colors.white24
+                                  : Colors.transparent),
+                          child: Center(
+                              child: Text(
+                            'class$i',
+                            style: TextStyle(
+                                fontSize: wi * .035,
+                                fontFamily: 'sans',
+                                color: active == i
+                                    ? Colors.white
+                                    : Colors.blueGrey[900]),
+                          )),
+                        ));
+                  },
+                  itemCount: 10,
+                  scrollDirection: Axis.horizontal,
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20))),
+                height: he * .9,
+                margin: EdgeInsets.only(top: he * .05),
+                child: ListView.builder(
+                  itemBuilder: (c, i) {
+                    return Container(
+                      margin: EdgeInsets.all(wi * .05),
+                      width: wi * .1,
+                      height: he * .3,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        boxShadow: [
+                          BoxShadow(
+                              blurRadius: he * .02,
+                              color: Colors.grey,
+                              spreadRadius: 0.6)
+                        ],
+                        color: i.isEven
+                            ? Colors.brown[200]?.withOpacity(0.5)
+                            : Color.fromARGB(80, 10, 109, 106),
+                      ),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(
+                              MaterialPageRoute(builder: (c) => itemdtail()));
+                        },
+                        child: Container(
+                          margin: EdgeInsets.only(right: wi * .01),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(20),
+                                topLeft: Radius.circular(20),
+                                bottomRight: Radius.circular(20),
+                                topRight: Radius.circular(20)),
+                          ),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: <Widget>[
+                                Container(
+                                  width: wi * .4,
+                                  margin: EdgeInsets.only(
+                                      left: wi * .03,
+                                      top: he * .02,
+                                      bottom: he * .02),
+                                  child: Stack(
+                                    children: <Widget>[
+                                      Align(
+                                        alignment: Alignment.topCenter,
+                                        child: Text(
+                                          'title$i',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontFamily: 'sans',
+                                              color: Color.fromARGB(
+                                                  80, 10, 109, 106)),
+                                        ),
+                                      ),
+                                      Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          'hellow this mightt be some',
+                                          style: TextStyle(
+                                              color: Colors.blueGrey[800],
+                                              fontFamily: 'sans '),
+                                        ),
+                                      ),
+                                      Align(
+                                        alignment: Alignment.bottomRight,
+                                        child: Text(
+                                          'price\$',
+                                          style: TextStyle(
+                                              color: Colors.brown[300],
+                                              fontFamily: 'sans'),
+                                        ),
+                                      )
+                                    ],
                                   ),
-                                  Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text(
-                                      'hellow this mightt be some',
-                                      style: TextStyle(
-                                          color: Colors.blueGrey[800],
-                                          fontFamily: 'sans '),
-                                    ),
+                                ),
+                                Container(
+                                  width: wi * .4,
+                                  margin: EdgeInsets.only(
+                                      top: he * .02,
+                                      bottom: he * .02,
+                                      right: wi * .03),
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        fit: BoxFit.fill,
+                                        image: NetworkImage(
+                                            'http://sahand-esteglal.ir/media/products/bNone-First_Friends_1.jpg')),
                                   ),
-                                  Align(
-                                    alignment: Alignment.bottomRight,
-                                    child: Text(
-                                      'price\$',
-                                      style: TextStyle(
-                                          color: Colors.brown[300],
-                                          fontFamily: 'sans'),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                            Container(
-                              width: wi * .4,
-                              margin: EdgeInsets.only(
-                                  top: he * .02,
-                                  bottom: he * .02,
-                                  right: wi * .03),
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    fit: BoxFit.fill,
-                                    image: NetworkImage(
-                                        'http://sahand-esteglal.ir/media/products/bNone-First_Friends_1.jpg')),
-                              ),
-                            )
-                          ]),
-                    ),
-                  ),
-                );
-              },
-              itemCount: 10,
-            ),
-          ),
-        ]),
+                                )
+                              ]),
+                        ),
+                      ),
+                    );
+                  },
+                  itemCount: 10,
+                ),
+              ),
+            ]),
       )),
     );
   }
