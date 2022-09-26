@@ -51,10 +51,10 @@ class _signupinState extends State<signupin>
                 indicatorColor: Colors.pink[200],
                 tabs: <Widget>[
                   Tab(
-                    child: Text('signin'),
+                    child: Text('ورود'),
                   ),
                   Tab(
-                    child: Text('signup'),
+                    child: Text('ثبت نام'),
                   )
                 ]),
           ),
